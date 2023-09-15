@@ -1,8 +1,25 @@
-var builder = WebApplication.CreateBuilder(args);
+using GameEngine.Catalog.Service.Entities;
+using GameEngine.Common.MongoDB;
+using GameEngine.Common.Settings;
+using Microsoft.AspNetCore.Http.Features;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 
+
+ServiceSettings serviceSettings;
+
+
+var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
+
+builder.Services.AddMongo(config)
+.AddMongoRepository<Item>("items");
 // Add services to the container.
 
-builder.Services.AddControllers(options => {
+builder.Services.AddControllers(options =>
+{
     options.SuppressAsyncSuffixInActionNames = false;
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

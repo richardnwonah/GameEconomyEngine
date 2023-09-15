@@ -1,6 +1,8 @@
+using GameEngine.Common;
+
 namespace GameEngine.Catalog.Service.Entities
 {
-    public class Item
+    public class Item : IEntity
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -8,5 +10,5 @@ namespace GameEngine.Catalog.Service.Entities
         public decimal Price { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
     }
-    
+
 }
