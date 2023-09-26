@@ -29,14 +29,14 @@ namespace GameEngine.Catalog.Service.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemDto>> GetByIdAsync(Guid id)
         {
-            var item = await itemsRepository.GetAsync(id)
+            var item = await itemsRepository.GetAsync(id);
 
             if (item == null)
             {
                 return NotFound();
             }
             return item.AsDto();
-        }
+        }  
 
         [HttpPost]
         public async Task<ActionResult<ItemDto>> PostAsync(CreateItemDto createItemDto)
@@ -79,7 +79,7 @@ namespace GameEngine.Catalog.Service.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            var item = await itemsRepository.GetAsync(id );
+            var item = await itemsRepository.GetAsync(id);
 
             if (item == null)
             {
